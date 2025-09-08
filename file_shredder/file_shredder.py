@@ -1,6 +1,6 @@
 import os
-import sys
 import time
+from colorama import Fore
 
 def clear():
     if os.name == 'nt':
@@ -8,8 +8,19 @@ def clear():
     else:
         os.system("clear")
 
+def ascii_art():
+    ascii = f""" {Fore.LIGHTYELLOW_EX}
+    _______ __        _____ __                  __    __         
+   / ____(_) /__     / ___// /_  ________  ____/ /___/ /__  _____
+  / /_  / / / _ \    \__ \/ __ \/ ___/ _ \/ __  / __  / _ \/ ___/
+ / __/ / / /  __/   ___/ / / / / /  /  __/ /_/ / /_/ /  __/ /    
+/_/   /_/_/\___/   /____/_/ /_/_/   \___/\__,_/\__,_/\___/_/                                                                      
+"""
+    print(ascii)
+
 def file_shredder():
     clear()
+    ascii_art()
     shred_list_option = input("Would you like to use shred_list.txt file paths [Y or N] >> ")
     if shred_list_option.lower().strip() == 'y':
         txt_shredder()
