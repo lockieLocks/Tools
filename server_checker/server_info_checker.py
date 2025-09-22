@@ -9,19 +9,19 @@ def clear():
         os.system('clear')
 
 def ascii_art():
-    ascii = f""" {Fore.LIGHTRED_EX}
+    asciii = f""" {Fore.LIGHTRED_EX}
    .dMMMb  dMMMMMP dMMMMb  dMP dMP dMMMMMP dMMMMb        .aMMMb  dMP dMP dMMMMMP .aMMMb  dMP dMP dMMMMMP dMMMMb 
   dMP" VP dMP     dMP.dMP dMP dMP dMP     dMP.dMP       dMP"VMP dMP dMP dMP     dMP"VMP dMP.dMP dMP     dMP.dMP 
   VMMMb  dMMMP   dMMMMK" dMP dMP dMMMP   dMMMMK"       dMP     dMMMMMP dMMMP   dMP     dMMMMK" dMMMP   dMMMMK"  
 dP .dMP dMP     dMP"AMF  YMvAP" dMP     dMP"AMF       dMP.aMP dMP dMP dMP     dMP.aMP dMP"AMF dMP     dMP"AMF   
 VMMMP" dMMMMMP dMP dMP    VP"  dMMMMMP dMP dMP        VMMMP" dMP dMP dMMMMMP  VMMMP" dMP dMP dMMMMMP dMP dMP                                                                                                                    
 """
-    print(ascii)
+    print(asciii)
 
 def server_checker():
     clear()
     ascii_art()
-    invite = input("Enter Server Code >> ").strip()
+    invite = input(f"Enter Server Code {Fore.LIGHTWHITE_EX}>>{Fore.LIGHTBLUE_EX} ").strip()
     output_option = input("Do you want to save the output to a file? (y/n) >> ").strip().lower()
     if output_option == 'y':
         output = True

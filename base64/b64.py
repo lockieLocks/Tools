@@ -9,8 +9,8 @@ def clear():
     else:
         os.system('clear')
 
-def ascii():
-    ascii = f""" {Fore.YELLOW}
+def the_ascii_art():
+    ascii_art = f""" {Fore.YELLOW}
                                                                                                                                                                                                                 
 BBBBBBBBBBBBBBBBB           66666666         444444444                                                    
 B::::::::::::::::B         6::::::6         4::::::::4                                                    
@@ -34,9 +34,8 @@ BBBBBBBBBBBBBBBBB        666666666            4444444444 ......  p::::::pppppppp
                                                                 p:::::::p           y:::::y               
                                                                 p:::::::p          yyyyyyy                
                                                                 ppppppppp                                 
-                                                                                                          
 """
-    print(ascii)
+    print(ascii_art)
 
 def text_encode():
     text = input("Enter Text >> ")
@@ -106,7 +105,7 @@ exec(base64.b64decode("{encoded}").decode())
 
 def main():
     clear()
-    ascii()
+    the_ascii_art()
     print("\n                                       [1] - Encode Text")
     print("                                       [2] - Decode Text")
     print("                                       [3] - Encode TXT File")

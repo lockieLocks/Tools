@@ -23,7 +23,7 @@ def ascii():
 
 def ip_lookup():
     ip = input("\n\nEnter Target IP >> ")
-    output_option = input("Do you want to store results into a output.txt? [Y or N] >> ")
+    output_option = input(f"Do you want to store results into a output.txt? {Fore.LIGHTWHITE_EX}[{Fore.BLUE}Y or N{Fore.LIGHTWHITE_EX}]{Fore.BLUE} {Fore.LIGHTWHITE_EX}>>{Fore.BLUE} ")
     output_normal = output_option.strip().lower()
     try:
         response = requests.get(f"https://ipinfo.io/{ip}/json")
@@ -34,7 +34,7 @@ def ip_lookup():
                 print(f"{key} :3> {value}")
             print("-" * 20 + "RAW DATA" + "-" * 20)
         else:
-            print(f"Script Malfunctioned or IP invalid, Status Code >> {response.status_codes}")
+            print(f"Script Malfunctioned or IP invalid, Status Code >> {response.status_code}")
 
     except Exception as e:
         print(e)
@@ -51,7 +51,7 @@ def ip_lookup():
 def main():
     clear()
     ascii()
-    print("                     [1] IP Lookup")
+    print(f"                     {Fore.LIGHTWHITE_EX}[{Fore.BLUE}1{Fore.LIGHTWHITE_EX}]{Fore.BLUE} IP Lookup")
     option = input("Option >> ")
     if option == '1':
         ip_lookup()
@@ -64,6 +64,5 @@ def main():
 final = main()
 if __name__ == '__main__':
     print(final)
-    input("Press Enter to return")
-    main()
+    input("Press Enter to return...")
 

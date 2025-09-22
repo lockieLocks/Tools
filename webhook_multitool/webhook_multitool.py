@@ -72,7 +72,7 @@ def webhook_spammer():
                 time.sleep(1)
         print()
     except Exception as e:
-        print("Error >> " + str(e))
+        print(f"Error {Fore.LIGHTWHITE_EX}>>{Fore.GREEN} " + str(e))
     
     input("Press Enter to Return...")    
     webhook_main()
@@ -81,11 +81,11 @@ def whf():
     global webhook
     if not webhook:
         print("No Webhook Detected <> Use Option 1 to add webhook")
-        input("\nPress Enter to Return...")
+        input(f"\nPress Enter to Return{Fore.LIGHTWHITE_EX}...{Fore.GREEN}")
         webhook_main()
     clear()
     for i in range(5):
-        print(f"\rStarting FXCKED in {5 - i} seconds", flush=True, end="")
+        print(f"\rStarting {Fore.LIGHTWHITE_EX}FXCKED{Fore.GREEN} in {5 - i} seconds", flush=True, end="")
         sys.stdout.flush()
         time.sleep(1)
     print()
@@ -119,7 +119,7 @@ def whf():
         if r.status_code == 429:
             retry_after = r.json().get("retry_after", 1)
             for sec in range(int(float(retry_after)), 0, -1):
-                print(f"\rRatelimited! Waiting {sec} seconds...", end="", flush=True)
+                print(f"\rRatelimited! Waiting {sec} seconds{Fore.LIGHTWHITE_EX}...{Fore.GREEN}", end="", flush=True)
                 time.sleep(1)
             continue
         
@@ -132,30 +132,30 @@ def whf():
     print(f"Successfully deleted Webhook - Status Code > {d.status_code}")
     print("\nWEBHOOK SUCCESSFULLY FXCKED (Enter new Webhook in option 1)")
     webhook = None
-    input("Press Enter to Return...")
+    input(f"Press Enter to Return{Fore.LIGHTWHITE_EX}...{Fore.GREEN}")
     webhook_main()
 
 def webhook_delete():
     global webhook
     if not webhook:
         print("No Webhook Detected <> Use Option 1 to add webhook")
-        input("\nPress Enter to Return...")
+        input(f"\nPress Enter to Return{Fore.LIGHTWHITE_EX}...{Fore.GREEN}")
         webhook_main()
     delete_option = input(f"Are you sure your about to delete your webhook? [Y or N] >> ")
     delete_normal = delete_option.strip().lower()
     if delete_normal == 'y':
         r = requests.delete(webhook)
         if r.status_code in [204, 200]:
-            print("Successfully Deleted webhook")
+            print(f"Successfully {Fore.RED}Deleted{Fore.GREEN} webhook")
         else:
-            print(f"Status Code >> {r.status_code}")
+            print(f"Status Code {Fore.LIGHTWHITE_EX}>>{Fore.GREEN} {r.status_code}")
     elif delete_normal == 'n':
         webhook_main()
     
 def webhook_info():
     if not webhook:
         print("No Webhook Detected <> Use Option 1 to add webhook")
-        input("\nPress Enter to Return...")
+        input(f"\nPress Enter to Return{Fore.LIGHTWHITE_EX}...{Fore.GREEN}")
         webhook_main()
     try:
         clear()
@@ -164,20 +164,20 @@ def webhook_info():
         for key, value in data.items():
             print(f"{key} :3> {value}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error {Fore.LIGHTWHITE_EX}>>{Fore.GREEN} {e}")
 
-    input("Press Enter to Return...")
+    input("Press Enter to Return{Fore.LIGHTWHITE_EX}...{Fore.GREEN}")
     webhook_main()
 
 def webhook_main():
     clear()
     ascii_art()
-    print(" " * 20 + "Welcome to Webhook Fucker / THIS IS ALL MADE FOR EDUCATION AND RESEARCH PURPOSES" + " " * 20)
+    print(" " * 20 + f"Welcome to Webhook Fucker {Fore.LIGHTWHITE_EX}/{Fore.GREEN} THIS IS ALL MADE FOR EDUCATION AND RESEARCH PURPOSES" + " " * 20)
     print("=" * 120)
     print("\n                                     [1] - Store Webhook (MUST DO FIRST)            [4] - Webhook Delete")
     print("                                     [2] - Webhook FXCKED (premade)                 [5] - Webhook Info")
     print("                                     [3] - Webhook Spammer                          [99] - Exit")
-    option = input("Option >> ")
+    option = input(f"Option {Fore.LIGHTWHITE_EX}>>{Fore.GREEN} ")
     if option == '1':
         store_webhook()
     elif option == '2':

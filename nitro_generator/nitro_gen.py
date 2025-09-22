@@ -12,7 +12,7 @@ def clear():
         os.system("clear")
 
 def ascii_art():
-    ascii = f""" {Fore.LIGHTBLUE_EX}
+    asciii = f""" {Fore.LIGHTBLUE_EX}
 ooooo      ooo  o8o      .                             .oooooo.                          
 `888b.     `8'  `"'    .o8                            d8P'  `Y8b                         
  8 `88b.    8  oooo  .o888oo oooo d8b  .ooooo.       888            .ooooo.  ooo. .oo.   
@@ -20,15 +20,15 @@ ooooo      ooo  o8o      .                             .oooooo.
  8     `88b.8   888    888    888     888   888      888     ooooo 888ooo888  888   888  
  8       `888   888    888 .  888     888   888      `88.    .88'  888    .o  888   888  
 o8o        `8  o888o   "888" d888b    `Y8bod8P'       `Y8bood8P'   `Y8bod8P' o888o o888o 
-            DISCLAIMER: Chances of getting a real nitro code are almost IMPOSSIBLE
+            {Fore.LIGHTWHITE_EX}DISCLAIMER{Fore.LIGHTBLUE_EX}: Chances of getting a real nitro code are almost {Fore.RED}IMPOSSIBLE{Fore.LIGHTBLUE_EX}
 """
-    print(ascii)
+    print(asciii)
 
 webhook = None
 
 def nitro_options():
     global webhook
-    webhook_option = input("Would you like to send the generated codes in a webhook? [Y or N] >> ")
+    webhook_option = input(f"Would you like to send the generated codes in a webhook? {Fore.LIGHTWHITE_EX}[{Fore.LIGHTBLUE_EX}Y or N{Fore.LIGHTWHITE_EX}]{Fore.LIGHTBLUE_EX} >> ")
     if webhook_option.lower().strip() == 'y':
         webhook = input("Enter Webhook URL >> ")
         try:
@@ -40,17 +40,17 @@ def nitro_options():
                     time.sleep(0.01)
                 print()
             else:
-                print(f"-Webhook Invalid - Status Code > {response.status_code}-")
+                print(f"-Webhook Invalid {Fore.LIGHTWHITE_EX}-{Fore.LIGHTBLUE_EX} Status Code {Fore.LIGHTWHITE_EX}>{Fore.LIGHTBLUE_EX} {response.status_code}-")
         except Exception as e:
-            print("Error >> " + str(e))
-        input("Press Enter to Continue...")
+            print(f"Error {Fore.LIGHTWHITE_EX}>>{Fore.LIGHTBLUE_EX} " + str(e))
+        input(f"Press Enter to Continue{Fore.LIGHTWHITE_EX}...{Fore.LIGHTBLUE_EX}")
     elif webhook_option.lower().strip() != 'n':
         print("Invalid Option")
         time.sleep(0.5)
         main()
         return
 
-    infinite = input("Would you like it to run infinitely? [Y or N] >> ")
+    infinite = input(f"Would you like it to run infinitely? {Fore.LIGHTWHITE_EX}[{Fore.LIGHTBLUE_EX}Y or N{Fore.LIGHTWHITE_EX}]{Fore.LIGHTBLUE_EX} >> ")
     if infinite.lower().strip() == 'y':
         nitro_gen(infinite=True)
     elif infinite.lower().strip() == 'n':
@@ -72,7 +72,7 @@ def nitro_gen(infinite=False):
                 print(f"\rGenerated Code: {code}")
                 if webhook:
                     try:
-                        requests.post(webhook, json={"content": code})
+                        requests.post(str(webhook), json={"content": code})
                     except Exception as e:
                         print(f"Error sending to webhook: {e}")
                 time.sleep(0.1)
@@ -87,7 +87,7 @@ def nitro_gen(infinite=False):
             if webhook:
                 for code in codes:
                     try:
-                        requests.post(webhook, json={"content": code})
+                        requests.post(str(webhook), json={"content": code})
                     except Exception as e:
                         print(f"Error sending to webhook: {e}")
     except Exception as e:

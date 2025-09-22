@@ -118,16 +118,16 @@ def username_checker():
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36"
             })
             if error_msg in r.text:
-                result = f"{name} - {error_msg} found in {url}"
+                result = f"{name} {Fore.LIGHTWHITE_EX}-{Fore.LIGHTMAGENTA_EX} {error_msg} found in {url}"
                 invalid_results.append(result)
             elif r.status_code in [404, 403, 402, 401, 400]:
-                result = f"{name} - Status Code >> {r.status_code} - User Not found >> {url}"
+                result = f"{name} {Fore.LIGHTWHITE_EX}-{Fore.LIGHTMAGENTA_EX} Status Code >> {r.status_code} - User Not found >> {url}"
                 invalid_results.append(result)
             elif r.status_code == 200:
-                result = f"{name} - Status Code > {r.status_code} - User Found >> {url}"
+                result = f"{name} {Fore.LIGHTWHITE_EX}-{Fore.LIGHTMAGENTA_EX} Status Code {Fore.LIGHTWHITE_EX}>{Fore.LIGHTMAGENTA_EX} {r.status_code} - User Found >> {url}"
                 valid_results.append(result)
             else:
-                result = f"{name} - Unknown Error >> {r.status_code}"
+                result = f"{name} {Fore.LIGHTWHITE_EX}-{Fore.LIGHTMAGENTA_EX} Unknown Error {Fore.LIGHTWHITE_EX}>>{Fore.LIGHTMAGENTA_EX} {r.status_code}"
                 invalid_results.append(result)
         print("=" * 25 + "Valid Username info" + "=" * 25)
         for item in valid_results:

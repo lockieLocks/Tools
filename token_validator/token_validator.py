@@ -25,7 +25,7 @@ def tokens_ascii():
 def token_validator():
     clear()
     tokens_ascii()
-    Option = input("Would you like to Validate Tokens from tokens.txt - [Y or N] >> ")
+    Option = input(f"Would you like to Validate Tokens from tokens.txt - {Fore.LIGHTWHITE_EX}[{Fore.YELLOW}Y or N{Fore.LIGHTWHITE_EX}]{Fore.YELLOW} {Fore.LIGHTWHITE_EX}>>{Fore.YELLOW} ")
     if Option.strip().lower() == 'y':
         try:             
             with open("tokens.txt", "r") as f:
@@ -33,9 +33,9 @@ def token_validator():
                 for token in tokens:
                     validate_tokens(token)
         except FileNotFoundError as e:
-            print(f"Error >> {e}")
+            print(f"Error {Fore.LIGHTWHITE_EX}>>{Fore.YELLOW} {e}")
     elif Option.strip().lower() == 'n':
-        token = input("Enter Token >> ")
+        token = input(f"Enter Token {Fore.LIGHTWHITE_EX}>>{Fore.YELLOW} ")
         validate_tokens(token)
 
 def validate_tokens(token):

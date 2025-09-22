@@ -9,7 +9,7 @@ def clear():
         os.system("clear")
 
 def url_ascii():
-    ascii = f""" {Fore.CYAN}
+    ascii_art = f""" {Fore.CYAN}
  #     # ######  #           #####  #     # ####### ######  ####### ####### #     # ####### ######  
  #     # #     # #          #     # #     # #     # #     #    #    #       ##    # #       #     # 
  #     # #     # #          #       #     # #     # #     #    #    #       # #   # #       #     # 
@@ -17,14 +17,14 @@ def url_ascii():
  #     # #   #   #                # #     # #     # #   #      #    #       #   # # #       #   #   
  #     # #    #  #          #     # #     # #     # #    #     #    #       #    ## #       #    #  
   #####  #     # #######     #####  #     # ####### #     #    #    ####### #     # ####### #     # """
-    print(ascii)
+    print(ascii_art)
 
 def url_shortener():
     clear()
     url_ascii()
-    url = input("\nEnter URL to shorten with tinyurl >> ")
+    url = input(f"\nEnter URL to shorten with tinyurl {Fore.LIGHTWHITE_EX}>>{Fore.YELLOW} ")
     try:
-        r = requests.get(f"http://tinyurl.com/api-create.php?url={url}")
+        r = requests.get(f"https://tinyurl.com/api-create.php?url={url}")
         print(f"\n[+] Short URL: {r.text}")
     except Exception as e:
         print(f"[x] Error: {e}")
